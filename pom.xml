@@ -23,7 +23,7 @@
     </dependency>
   </dependencies>
   <modules>
-    <module>service</module>
-    <module>database</module>
+    <module>service-student</module>
+    <module>database-student</module>
   </modules>
 </project>
