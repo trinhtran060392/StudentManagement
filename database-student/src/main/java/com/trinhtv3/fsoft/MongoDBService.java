@@ -1,11 +1,11 @@
-package com.trinhtv3.fsoft.services.utils;
+package com.trinhtv3.fsoft;
 
 import java.net.UnknownHostException;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
-public class DataFactory {
+public class MongoDBService implements DatabaseService<DB> {
   private static final MongoClient client;
   
   private final String dbname = "angularTest";

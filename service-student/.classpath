@@ -8,5 +8,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/mongodb/mongo-java-driver/2.12.4/mongo-java-driver-2.12.4.jar" sourcepath="M2_REPO/org/mongodb/mongo-java-driver/2.12.4/mongo-java-driver-2.12.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/google/inject/extensions/guice-assistedinject/3.0/guice-assistedinject-3.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/testng/testng/6.8.21/testng-6.8.21.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/database"/>
+	<classpathentry kind="src" path="/database-student"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

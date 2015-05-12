@@ -1,12 +1,12 @@
 package com.trinhtv3.fsoft.services;
 
+import com.trinhtv3.fsoft.MongoDBService;
+
 import com.google.inject.Inject;
 import com.mongodb.DBObject;
 import com.trinhtv3.fsoft.services.base.MongoAbstractCRUD;
 import com.trinhtv3.fsoft.services.entity.School;
 import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
-import com.trinhtv3.fsoft.services.utils.DataFactory;
-
 
 
 public class SchoolService extends MongoAbstractCRUD<School> {
@@ -17,7 +17,7 @@ public class SchoolService extends MongoAbstractCRUD<School> {
   private SchoolFactory factory;
   
   @Inject
-  public SchoolService(DataFactory mongo) {
+  public SchoolService(MongoDBService mongo) {
     
     this.col = mongo.getDatabase().getCollection(col_name);
   

@@ -48,5 +48,10 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.trinhtv3.fsoft</groupId>
+			<artifactId>database-student</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
   </dependencies>
 </project>

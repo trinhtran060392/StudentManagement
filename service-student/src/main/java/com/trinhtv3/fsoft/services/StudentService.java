@@ -7,6 +7,8 @@ package com.trinhtv3.fsoft.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.trinhtv3.fsoft.MongoDBService;
+
 import com.google.inject.Inject;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
@@ -15,7 +17,6 @@ import com.trinhtv3.fsoft.services.base.MongoAbstractCRUD;
 import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
 import com.trinhtv3.fsoft.services.entity.references.SchoolReference;
-import com.trinhtv3.fsoft.services.utils.DataFactory;
 
 
 
@@ -27,7 +28,7 @@ public class StudentService extends MongoAbstractCRUD<Student> {
   private StudentFactory factory;
   
   @Inject
-  public StudentService(DataFactory mongo) {
+  public StudentService(MongoDBService mongo) {
     this.col = mongo.getDatabase().getCollection(col_name);
     
   }
