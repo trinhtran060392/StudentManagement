@@ -5,6 +5,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.trinhtv3.fsoft.MongoDBService;
+import com.trinhtv3.fsoft.services.MongoAuthenticationService;
 import com.trinhtv3.fsoft.services.SchoolService;
 import com.trinhtv3.fsoft.services.StudentService;
 import com.trinhtv3.fsoft.services.entity.factories.ReferenceFactory;
@@ -35,6 +36,8 @@ public class OrganizationModule extends AbstractModule {
     bind(SchoolService.class);
     
     bind(MongoDBService.class);
+    
+    bind(MongoAuthenticationService.class);
     
   }
 

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.inject.Inject;
+import com.trinhtv3.fsoft.services.MongoAuthenticationService;
 import com.trinhtv3.fsoft.services.StudentService;
 import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
@@ -31,6 +32,9 @@ public class Application extends Controller {
   @Inject
   private StudentService studentService;
   
+  @Inject
+  private MongoAuthenticationService authService;
+  
   public Result allStudents() {
     
     List<Student> list = studentService.getAll();
@@ -41,7 +45,6 @@ public class Application extends Controller {
     for (Student s : list) {
       object = Json.newObject();
       object.put("_id", s.getId());
-      object.put("name", s.getName());
       object.put("age", s.getAge());
       
       array.add(object);
@@ -72,7 +75,6 @@ public class Application extends Controller {
     
     ObjectNode json = Json.newObject();
     json.put("_id", student.getId());
-    json.put("name", student.getName());
     json.put("age", student.getAge());
     json.put("score", student.getScore());
     json.put("classRoom", student.getClassRoom());
@@ -91,7 +93,6 @@ public class Application extends Controller {
     Student student = studentService.findById(id);
     
     student.put("_id", id);
-    student.setName(name);
     student.put("score", score);
     student.put("age", age);
     student.put("classRoom", classRoom);
@@ -117,8 +118,8 @@ public class Application extends Controller {
     String name = form.get("name");
     String pass = form.get("password");
     
-    
-    return ok();
+    String token = authService.logIn(name, pass);
+    return ok(token);
   }
   
   public Result getBoyStudent() {
