@@ -1,14 +1,20 @@
 
+import java.lang.reflect.Method;
+
 import play.Application;
 import play.GlobalSettings;
+import play.mvc.Action;
+import play.mvc.Http.Request;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
 import com.trinhtv3.fsoft.MongoDBService;
+import com.trinhtv3.fsoft.services.OrganizationContext;
 import com.trinhtv3.fsoft.services.SchoolService;
 import com.trinhtv3.fsoft.services.StudentService;
+import com.trinhtv3.fsoft.services.base.AuthenticationService;
 import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.ReferenceFactory;
 import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
@@ -61,6 +67,35 @@ public class Global extends GlobalSettings{
       }
     }
     
+    super.onStart(application);
+    
+  }
+  
+  @Override
+  public Action<?> onRequest(Request request, Method method) {
+    
+    OrganizationContext context = injector.getInstance(OrganizationContext.class);
+    
+    String token = request.getHeader(AuthenticationService.AUTH_TOKEN_HEADER);
+    
+    if (token == null) {
+      context.setStudent(null);
+      
+      return super.onRequest(request, method);
+    }
+    
+    AuthenticationService<Student> authen = injector.getInstance(AuthenticationService.class);
+    
+    Student student = authen.findByAuthToken(token);
+    
+    if (student == null) {
+      context.setStudent(null);
+      return super.onRequest(request, method);
+    }
+    
+    context.setStudent(student);
+    
+    return super.onRequest(request, method);
   }
   
   @Override
@@ -68,6 +103,8 @@ public class Global extends GlobalSettings{
     
     MongoDBService service = injector.getInstance(MongoDBService.class);
     service.dropDatabase();
+    
+    super.onStop(app);
   }
   
   @Override

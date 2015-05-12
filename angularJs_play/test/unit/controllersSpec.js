@@ -1,6 +1,6 @@
-'use strict';
+/*'use strict';
 
-/* jasmine specs for controllers go here */
+ jasmine specs for controllers go here 
 describe('PhoneCat controllers', function(){
 
   beforeEach(function(){
@@ -34,4 +34,4 @@ describe('PhoneCat controllers', function(){
     });
   });
 
-});
+});*/

@@ -21,13 +21,14 @@ public class MongoAuthenticationService implements AuthenticationService<Student
   @Inject
   private StudentService service;
   
-  @Inject Logger logger;
+  @Inject private Logger logger;
   
   private Map<String, Student> studentAuthenticated = new HashMap<String, Student>();
   
   @Override
   public String logIn(String username, String password) {
     
+    logger.info("handle logging in");
     Student student = service.get(username);
     
     if (student == null) {
@@ -44,6 +45,8 @@ public class MongoAuthenticationService implements AuthenticationService<Student
       studentAuthenticated.put(token, student);
       return token;
     }
+    
+    logger.info("logging failed");
    
     return null;
   }

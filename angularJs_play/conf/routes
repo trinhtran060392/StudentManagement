@@ -15,7 +15,7 @@ PUT			/students/:id				@controllers.Application.doUpdateStudent(id)
 
 DELETE 		/students/:id				@controllers.Application.deleteStudent(id)
 
-POST		/login						@controllers.Application.checkLogin()
+POST		/api/authen/login			@controllers.Application.checkLogin()
 
 GET			/boys						@controllers.Application.getBoyStudent()
 

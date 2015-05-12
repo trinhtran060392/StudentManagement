@@ -113,13 +113,17 @@ public class Application extends Controller {
   
   public Result checkLogin() {
     
+    System.out.println("Logging in -------------");
     DynamicForm form = Form.form().bindFromRequest();
     
     String name = form.get("name");
     String pass = form.get("password");
     
     String token = authService.logIn(name, pass);
-    return ok(token);
+    
+    ObjectNode object = Json.newObject();
+    object.put("AuthenKey", token);
+    return ok(object);
   }
   
   public Result getBoyStudent() {
