@@ -37,8 +37,7 @@ public class StudentService extends MongoAbstractCRUD<Student> {
   }
   @Override
   public Student transform(DBObject source) {
-    Student student = factory.create((String)source.get("name"), (String)source.get("age"), (String)source.get("score"),(String) source.get("classRoom"), (String)source.get("password"));
-    student.put("_id", source.get("_id"));
+    Student student = factory.create((String)source.get("_id"), (String)source.get("age"), (String)source.get("score"),(String) source.get("classRoom"), (String)source.get("password"));
     
     student.put("school", source.get("school"));
     

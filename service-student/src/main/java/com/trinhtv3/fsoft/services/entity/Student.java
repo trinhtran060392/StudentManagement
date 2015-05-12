@@ -21,8 +21,7 @@ public class Student extends BasicDBObject{
   
   @Inject
   public Student(ReferenceFactory<SchoolReference> schoolRefFactory,@Assisted("name") String name, @Assisted("age") String age, @Assisted("score") String score,@Assisted("classRoom") String classRoom, @Assisted("password") String password) {
-    this.put("_id", UUID.randomUUID().toString());
-    this.put("name", name);
+    this.put("_id", name);
     this.put("age", age);
     this.put("score", score);
     this.put("classRoom", classRoom);
@@ -33,11 +32,6 @@ public class Student extends BasicDBObject{
   
   public String getId() {
     return this.getString("_id");
-  }
-  
-  public String getName() {
-    return this.getString("name");
-    
   }
   
   public String getAge() {
@@ -60,10 +54,9 @@ public class Student extends BasicDBObject{
     this.put("school", school.toJSon());
   }
   
-  public void setName(String name) {
-    this.put("name", name);
+  public void setAge(String age) {
+    this.put("age", age);
   }
-  
   public SchoolReference getSchool() {
     Object obj = this.get("school");
     

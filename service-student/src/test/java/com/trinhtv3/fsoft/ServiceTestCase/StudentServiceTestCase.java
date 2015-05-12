@@ -58,20 +58,18 @@ public class StudentServiceTestCase extends AbstractTestCase {
   public void testUpdateStudent() {
 
     initData();
-    DBObject object = new BasicDBObject("name", "student10");
+    DBObject object = new BasicDBObject("_id", "student10");
     
     List<Student> list = service.find(object);
     Assert.assertEquals(list.size(), 1);
     
     Student student = list.get(0);
     
-    student.setName("UpdatedName");;
+    student.setAge("updated_age");
     
     service.update(student);
     
-    Assert.assertEquals(service.find(object).size(), 0);
-    
-    object = new BasicDBObject("name", "UpdatedName");
+    object = new BasicDBObject("age", "updated_age");
     Assert.assertEquals(service.find(object).size(), 1);
     
   }
@@ -80,7 +78,7 @@ public class StudentServiceTestCase extends AbstractTestCase {
   public void testDeleteStudent() {
     
     initData();
-    DBObject object = new BasicDBObject("name", "student10");
+    DBObject object = new BasicDBObject("_id", "student10");
     
     List<Student> list = service.find(object);
     Assert.assertEquals(list.size(), 1);
