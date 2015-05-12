@@ -3,6 +3,7 @@
  */
 package com.trinhtv3.fsoft.services;
 
+import com.google.inject.Singleton;
 import com.trinhtv3.fsoft.services.entity.School;
 import com.trinhtv3.fsoft.services.entity.Student;
 
@@ -10,6 +11,7 @@ import com.trinhtv3.fsoft.services.entity.Student;
  * @author TrinhTV3
  *
  */
+@Singleton
 public class OrganizationContext {
 
   private static final ThreadLocal<Student> currentStudent = new ThreadLocal<Student>();
@@ -21,15 +23,15 @@ public class OrganizationContext {
     currentStudent.set(student);
   }
   
-  public void getStudent() {
-    currentStudent.get();
+  public Student getStudent() {
+    return currentStudent.get();
   }
   
   public void setSchool(School school) {
     currentSchool.set(school);
   }
   
-  public void getSchool() {
-    currentSchool.get();
+  public School getSchool() {
+    return currentSchool.get();
   }
 }

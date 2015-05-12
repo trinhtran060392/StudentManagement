@@ -9,6 +9,8 @@ import com.trinhtv3.fsoft.services.MongoAuthenticationService;
 import com.trinhtv3.fsoft.services.OrganizationContext;
 import com.trinhtv3.fsoft.services.SchoolService;
 import com.trinhtv3.fsoft.services.StudentService;
+import com.trinhtv3.fsoft.services.base.AuthenticationService;
+import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.ReferenceFactory;
 import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
@@ -38,7 +40,8 @@ public class OrganizationModule extends AbstractModule {
     
     bind(MongoDBService.class);
     
-    bind(MongoAuthenticationService.class);
+    bind(new TypeLiteral<AuthenticationService<Student>>(){})
+    .to(new TypeLiteral<MongoAuthenticationService>(){});
     
     bind(OrganizationContext.class);
     

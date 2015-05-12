@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.inject.Inject;
 import com.trinhtv3.fsoft.services.MongoAuthenticationService;
+import com.trinhtv3.fsoft.services.OrganizationContext;
 import com.trinhtv3.fsoft.services.StudentService;
 import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
@@ -34,6 +35,9 @@ public class Application extends Controller {
   
   @Inject
   private MongoAuthenticationService authService;
+  
+  @Inject
+  private OrganizationContext context;
   
   public Result allStudents() {
     
@@ -124,6 +128,20 @@ public class Application extends Controller {
     ObjectNode object = Json.newObject();
     object.put("AuthenKey", token);
     return ok(object);
+  }
+  
+  public Result current() {
+    
+    ObjectNode json = Json.newObject();
+    
+    System.out.println("+++++++++++");
+    if (context.getStudent() != null) {
+      
+      json.put("student", context.getStudent().toString());
+    }
+    
+    return ok(json);
+    
   }
   
   public Result getBoyStudent() {

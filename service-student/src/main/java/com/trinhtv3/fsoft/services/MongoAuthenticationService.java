@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.trinhtv3.fsoft.MD5;
 import com.trinhtv3.fsoft.services.base.AuthenticationService;
 import com.trinhtv3.fsoft.services.entity.Student;
@@ -16,6 +17,7 @@ import com.trinhtv3.fsoft.services.entity.Student;
  * @author TrinhTV3
  *
  */
+@Singleton
 public class MongoAuthenticationService implements AuthenticationService<Student> {
 
   @Inject
@@ -23,7 +25,7 @@ public class MongoAuthenticationService implements AuthenticationService<Student
   
   @Inject private Logger logger;
   
-  private Map<String, Student> studentAuthenticated = new HashMap<String, Student>();
+  private final Map<String, Student> studentAuthenticated = new HashMap<String, Student>();
   
   @Override
   public String logIn(String username, String password) {
@@ -66,8 +68,9 @@ public class MongoAuthenticationService implements AuthenticationService<Student
 
   @Override
   public Student findByAuthToken(String token) {
-    
-    return studentAuthenticated.get(token);
+    Student student = studentAuthenticated.get(token);
+    System.out.println(student.getId());
+    return student;
   }
 
 }

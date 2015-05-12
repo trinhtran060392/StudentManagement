@@ -17,6 +17,8 @@ DELETE 		/students/:id				@controllers.Application.deleteStudent(id)
 
 POST		/api/authen/login			@controllers.Application.checkLogin()
 
+GET			/api/authen/context			@controllers.Application.current()
+
 GET			/boys						@controllers.Application.getBoyStudent()
 
 GET			/girls						@controllers.Application.getGirlStudent()

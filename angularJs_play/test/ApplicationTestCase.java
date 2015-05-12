@@ -26,7 +26,9 @@ import org.junit.Test;
 import play.libs.Json;
 import play.mvc.Result;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.trinhtv3.fsoft.services.base.AuthenticationService;
 
 public class ApplicationTestCase {
   
@@ -48,5 +50,28 @@ public class ApplicationTestCase {
       }
     });
     
+  }
+  
+  @Test
+  public void testCurrent() {
+    running(fakeApplication(), new Runnable() {
+      
+      @Override
+      public void run() {
+
+        ObjectNode object = Json.newObject();
+        object.put("name", "student1");
+        object.put("password", "pass");
+        Result login = routeAndCall(fakeRequest(POST, "/api/authen/login").withJsonBody(object));
+        
+        JsonNode json = Json.parse(contentAsString(login));
+        
+        String cookie = json.get("AuthenKey").asText();
+        Result result = routeAndCall(fakeRequest(GET, "/api/authen/context").withHeader("X-AUTH-TOKEN", cookie));
+        
+        System.out.println(contentAsString(result));
+        
+      }
+    });
   }
 }

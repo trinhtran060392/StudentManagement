@@ -77,16 +77,15 @@ public class Global extends GlobalSettings{
     OrganizationContext context = injector.getInstance(OrganizationContext.class);
     
     String token = request.getHeader(AuthenticationService.AUTH_TOKEN_HEADER);
-    
     if (token == null) {
       context.setStudent(null);
       
       return super.onRequest(request, method);
     }
     
-    AuthenticationService<Student> authen = injector.getInstance(AuthenticationService.class);
+    AuthenticationService<Student> service = injector.getInstance(Key.get(new TypeLiteral<AuthenticationService<Student>>(){}));
     
-    Student student = authen.findByAuthToken(token);
+    Student student = service.findByAuthToken(token);
     
     if (student == null) {
       context.setStudent(null);
@@ -95,6 +94,7 @@ public class Global extends GlobalSettings{
     
     context.setStudent(student);
     
+    System.out.println(context.getStudent().toString());
     return super.onRequest(request, method);
   }
   
