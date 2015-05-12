@@ -1,7 +1,3 @@
-/**
- * author: trinhtv3
- */
-
 package com.trinhtv3.fsoft.services;
 
 import java.util.ArrayList;
@@ -19,7 +15,14 @@ import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
 import com.trinhtv3.fsoft.services.entity.references.SchoolReference;
 
 
+/**
+ * TrinhTV3@fsoft.com.vn
+ */
 
+/**
+ * @author TrinhTV3
+ *
+ */
 public class StudentService extends MongoAbstractCRUD<Student> {
 
   private final String col_name = "students";

@@ -25,5 +25,6 @@
   <modules>
     <module>service-student</module>
     <module>database-student</module>
+    <module>common-student</module>
   </modules>
 </project>

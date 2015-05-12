@@ -12,7 +12,14 @@ import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
 import com.trinhtv3.fsoft.services.entity.references.SchoolReference;
 import com.trinhtv3.fsoft.services.entity.references.StudentReference;
+/**
+ * TrinhTV3@fsoft.com.vn
+ */
 
+/**
+ * @author TrinhTV3
+ *
+ */
 public class OrganizationModule extends AbstractModule {
 
   @Override

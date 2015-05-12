@@ -8,7 +8,14 @@ import com.trinhtv3.fsoft.services.base.MongoAbstractCRUD;
 import com.trinhtv3.fsoft.services.entity.School;
 import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
 
+/**
+ * TrinhTV3@fsoft.com.vn
+ */
 
+/**
+ * @author TrinhTV3
+ *
+ */
 public class SchoolService extends MongoAbstractCRUD<School> {
 
   private final String col_name = "schools";

@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.List;
 
+import play.data.DynamicForm;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -13,7 +15,14 @@ import com.google.inject.Inject;
 import com.trinhtv3.fsoft.services.StudentService;
 import com.trinhtv3.fsoft.services.entity.Student;
 import com.trinhtv3.fsoft.services.entity.factories.StudentFactory;
+/**
+ * TrinhTV3@fsoft.com.vn
+ */
 
+/**
+ * @author TrinhTV3
+ *
+ */
 public class Application extends Controller {
 
   @Inject
@@ -102,6 +111,13 @@ public class Application extends Controller {
   }
   
   public Result checkLogin() {
+    
+    DynamicForm form = Form.form().bindFromRequest();
+    
+    String name = form.get("name");
+    String pass = form.get("password");
+    
+    
     return ok();
   }
   
