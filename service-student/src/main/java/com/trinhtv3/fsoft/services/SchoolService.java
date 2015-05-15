@@ -1,8 +1,8 @@
 package com.trinhtv3.fsoft.services;
 
 import com.trinhtv3.fsoft.MongoDBService;
-
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.mongodb.DBObject;
 import com.trinhtv3.fsoft.services.base.MongoAbstractCRUD;
 import com.trinhtv3.fsoft.services.entity.School;
@@ -16,6 +16,7 @@ import com.trinhtv3.fsoft.services.entity.factories.SchoolFactory;
  * @author TrinhTV3
  *
  */
+@Singleton
 public class SchoolService extends MongoAbstractCRUD<School> {
 
   private final String col_name = "schools";

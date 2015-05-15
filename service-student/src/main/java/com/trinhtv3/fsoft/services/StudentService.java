@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.trinhtv3.fsoft.MongoDBService;
-
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -23,6 +23,7 @@ import com.trinhtv3.fsoft.services.entity.references.SchoolReference;
  * @author TrinhTV3
  *
  */
+@Singleton
 public class StudentService extends MongoAbstractCRUD<Student> {
 
   private final String col_name = "students";

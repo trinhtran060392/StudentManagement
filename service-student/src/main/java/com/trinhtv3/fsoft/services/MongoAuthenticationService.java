@@ -69,7 +69,7 @@ public class MongoAuthenticationService implements AuthenticationService<Student
   @Override
   public Student findByAuthToken(String token) {
     Student student = studentAuthenticated.get(token);
-    System.out.println(student.getId());
+    System.out.println(student.getId()+"in mongoAuthen service");
     return student;
   }
 
